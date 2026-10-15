@@ -1,0 +1,290 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Design Systems Summit 2025",
+    "description": "Join industry leaders from Figma, Airbnb, and Google for a deep dive into scalable multi-platform design tokens, design systems governance, accessibility pipelines, and design-to-code automation.",
+    "category": "Tech & Design Conferences",
+    "datetime": "2025-10-24T09:00:00.000Z",
+    "venue": {
+      "name": "Moscone Center",
+      "address": "747 Howard St",
+      "city": "San Francisco, CA",
+      "lat": 37.7842,
+      "lng": -122.4016
+    },
+    "ticketPrice": 149.00,
+    "availableSpots": 42,
+    "totalSpots": 350,
+    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Design Scale Global",
+      "email": "contact@designscale.io",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": true
+  },
+  {
+    "id": "evt-002",
+    "title": "Underground Acoustic Sessions",
+    "description": "An intimate evening with world-class indie singer-songwriters and acoustic instrumentalists. Enjoy artisanal craft beverages and immersive candlelight acoustics in an underground historic vault.",
+    "category": "Music & Acoustic Nights",
+    "datetime": "2025-10-26T20:30:00.000Z",
+    "venue": {
+      "name": "The Black Cat Lounge",
+      "address": "400 Eddy St",
+      "city": "San Francisco, CA",
+      "lat": 37.7836,
+      "lng": -122.4172
+    },
+    "ticketPrice": 35.00,
+    "availableSpots": 18,
+    "totalSpots": 80,
+    "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Soundscape Collective",
+      "email": "curator@soundscape.live",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": true
+  },
+  {
+    "id": "evt-003",
+    "title": "Analog Typography & Printmaking Workshop",
+    "description": "Hands-on letterpress printing, wooden type composition, and ink calibration masterclass. Take home your own hand-pulled limited edition posters and custom typeface proof prints.",
+    "category": "Workshops & Masterclasses",
+    "datetime": "2025-11-02T10:00:00.000Z",
+    "venue": {
+      "name": "Letterform Archive",
+      "address": "1001 Mariposa St",
+      "city": "San Francisco, CA",
+      "lat": 37.7635,
+      "lng": -122.3948
+    },
+    "ticketPrice": 85.00,
+    "availableSpots": 8,
+    "totalSpots": 20,
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Print Craft Guild",
+      "email": "workshops@letterform.org",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-004",
+    "title": "AI Founders & Engineers Meetup",
+    "description": "Connect with local AI researchers, LLM founders, and infrastructure architects. Lightning talks on local inference models, agent workflows, memory systems, and open networking over artisanal coffee.",
+    "category": "Community Meetups",
+    "datetime": "2025-11-05T08:00:00.000Z",
+    "venue": {
+      "name": "South Park Commons",
+      "address": "479 2nd St",
+      "city": "San Francisco, CA",
+      "lat": 37.7844,
+      "lng": -122.3965
+    },
+    "ticketPrice": 0.00,
+    "availableSpots": 25,
+    "totalSpots": 120,
+    "imageUrl": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "SF AI Collective",
+      "email": "crew@sfaicollective.com",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": true
+  },
+  {
+    "id": "evt-005",
+    "title": "Monochrome: Light, Shadows & Modern Form",
+    "description": "An exclusive international photography and kinetic sculpture exhibition exploring minimalism, brutalist architecture, and spatial luminance. Opening gala includes curator guided walkthrough.",
+    "category": "Art Exhibitions & Galas",
+    "datetime": "2025-11-10T11:00:00.000Z",
+    "venue": {
+      "name": "Yerba Buena Center for the Arts",
+      "address": "701 Mission St",
+      "city": "San Francisco, CA",
+      "lat": 37.7858,
+      "lng": -122.4025
+    },
+    "ticketPrice": 20.00,
+    "availableSpots": 64,
+    "totalSpots": 200,
+    "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Contemporary Arts Foundation",
+      "email": "tickets@ybca-contemporary.org",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-006",
+    "title": "Product Leadership & AI Systems 2025",
+    "description": "Executive summit exploring modern product-led growth, behavioral analytics, AI-assisted interface paradigms, and outcome-oriented engineering roadmaps.",
+    "category": "Tech & Design Conferences",
+    "datetime": "2025-11-14T09:30:00.000Z",
+    "venue": {
+      "name": "Palace of Fine Arts",
+      "address": "3301 Lyon St",
+      "city": "San Francisco, CA",
+      "lat": 37.8029,
+      "lng": -122.4484
+    },
+    "ticketPrice": 210.00,
+    "availableSpots": 15,
+    "totalSpots": 400,
+    "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "ProductCon Global",
+      "email": "registration@productcon.com",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-007",
+    "title": "Electronic Beats & Modular Synth Jam",
+    "description": "Live modular patch synthesizer performances, generative video mapping visuals, and an open patch-bay showcase with pioneering West Coast electronic producers.",
+    "category": "Music & Acoustic Nights",
+    "datetime": "2025-11-18T21:00:00.000Z",
+    "venue": {
+      "name": "Gray Area Grand Theater",
+      "address": "2665 Mission St",
+      "city": "San Francisco, CA",
+      "lat": 37.7554,
+      "lng": -122.4187
+    },
+    "ticketPrice": 45.00,
+    "availableSpots": 33,
+    "totalSpots": 150,
+    "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Gray Sound Arts",
+      "email": "events@grayarea.org",
+      "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-008",
+    "title": "Ceramic Forms & Geometry Workshop",
+    "description": "Learn wheel throwing, architectural hand-building techniques, slip decoration, and reduction firing dynamics with renowned ceramic sculptors.",
+    "category": "Workshops & Masterclasses",
+    "datetime": "2025-11-21T14:00:00.000Z",
+    "venue": {
+      "name": "Clayroom Studio",
+      "address": "1431 17th St",
+      "city": "San Francisco, CA",
+      "lat": 37.7644,
+      "lng": -122.3957
+    },
+    "ticketPrice": 60.00,
+    "availableSpots": 6,
+    "totalSpots": 16,
+    "imageUrl": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Potters League SF",
+      "email": "classes@clayroom.studio",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-009",
+    "title": "Creative Freelancers & Nomads Networking",
+    "description": "Monthly social mixer for independent designers, copywriters, developers, and creative directors. Speed intros, peer rate transparency discussions, and collaborative project matchmaking.",
+    "category": "Community Meetups",
+    "datetime": "2025-11-28T18:30:00.000Z",
+    "venue": {
+      "name": "Workspace Collective",
+      "address": "55 9th St",
+      "city": "San Francisco, CA",
+      "lat": 37.7766,
+      "lng": -122.4162
+    },
+    "ticketPrice": 15.00,
+    "availableSpots": 28,
+    "totalSpots": 90,
+    "imageUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Bay Area Freelance League",
+      "email": "hello@bafl.network",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-010",
+    "title": "Bay Area Sourdough & Fermentation Masterclass",
+    "description": "Master wild sourdough starter microbiology, dough hydration math, autolyse timing, and dutch oven steam baking with a master artisan baker.",
+    "category": "Workshops & Masterclasses",
+    "datetime": "2025-12-05T09:00:00.000Z",
+    "venue": {
+      "name": "Tartine Manufactory Kitchen",
+      "address": "591 Alabama St",
+      "city": "San Francisco, CA",
+      "lat": 37.7618,
+      "lng": -122.4116
+    },
+    "ticketPrice": 95.00,
+    "availableSpots": 5,
+    "totalSpots": 14,
+    "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Artisan Bakers Guild",
+      "email": "events@bakersguild.org",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": true
+  },
+  {
+    "id": "evt-011",
+    "title": "Jazz Fusion & Neo-Soul Winter Gala",
+    "description": "A dazzling celebration of contemporary jazz, improvisational trumpet quartets, and lush soul vocalists in an acoustically tuned concert hall with craft cocktails.",
+    "category": "Music & Acoustic Nights",
+    "datetime": "2025-12-12T19:30:00.000Z",
+    "venue": {
+      "name": "SFJAZZ Center",
+      "address": "201 Franklin St",
+      "city": "San Francisco, CA",
+      "lat": 37.7762,
+      "lng": -122.4215
+    },
+    "ticketPrice": 65.00,
+    "availableSpots": 50,
+    "totalSpots": 300,
+    "imageUrl": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "SF Jazz Society",
+      "email": "boxoffice@sfjazz.org",
+      "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  },
+  {
+    "id": "evt-012",
+    "title": "Modernist Architecture Walking Tour",
+    "description": "Guided walking tour through downtown architectural landmarks from mid-century modernism to parametric high-rises. Led by architectural historian and urban planner.",
+    "category": "Art Exhibitions & Galas",
+    "datetime": "2025-12-14T13:00:00.000Z",
+    "venue": {
+      "name": "Ferry Building Plaza",
+      "address": "1 Ferry Building",
+      "city": "San Francisco, CA",
+      "lat": 37.7955,
+      "lng": -122.3937
+    },
+    "ticketPrice": 25.00,
+    "availableSpots": 12,
+    "totalSpots": 30,
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
+    "organizer": {
+      "name": "Urban Design Forum",
+      "email": "tours@urbandesign.org",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80"
+    },
+    "featured": false
+  }
+]

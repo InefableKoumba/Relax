@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organizer Portal • Relax Local Events</title>
+  <meta name="description" content="Manage event listings, create new experiences, and track registered attendees in real-time." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <style>
+    .organizer-dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .org-banner {
+      background: var(--color-accent-black);
+      color: #FFFFFF;
+      padding: 32px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .org-banner-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .org-banner-desc {
+      color: #94A3B8;
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin-top: 4px;
+    }
+
+    .metrics-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .metric-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-dark);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .metric-card-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .metric-card-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-accent-black);
+    }
+
+    .organizer-two-col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .panel-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-dark);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid var(--color-border);
+      margin-bottom: 20px;
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-accent-black);
+    }
+
+    /* Attendees Table */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .attendees-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .attendees-table th {
+      padding: 10px 12px;
+      background: var(--color-bg-subtle);
+      border-bottom: 1.5px solid var(--color-border-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-accent-black);
+      font-size: 0.72rem;
+    }
+
+    .attendees-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .attendees-table tr:hover td {
+      background: var(--color-primary-light);
+    }
+
+    /* Event creation form */
+    .create-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .create-form-full {
+      grid-column: span 2;
+    }
+
+    /* Organizer events mini list */
+    .organizer-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .organizer-event-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+
+    .org-evt-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .org-evt-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .org-evt-main {
+      flex: 1;
+    }
+
+    .org-evt-main h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .org-evt-stats {
+      display: flex;
+      gap: 8px;
+    }
+
+    .stat-pill {
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .metrics-summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .organizer-two-col {
+        grid-template-columns: 1fr;
+      }
+      .create-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .create-form-full {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-icon-box">
+          <img src="assets/favicon.svg" alt="Relax Events Logo" class="brand-icon-img" />
+        </div>
+        <div>
+          <span class="brand-name">RELAX</span>
+          <span class="brand-tagline">Event Discovery</span>
+        </div>
+      </a>
+
+      <div class="header-search-wrap">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Search attendees or listings..." 
+            aria-label="Search" 
+          />
+        </div>
+      </div>
+
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Events</a>
+        <a href="favorites.html" class="nav-link favorites-nav-link">
+          <span class="favorites-nav-label">FAVORITES (0)</span>
+          <span class="favorites-count-badge" style="display:none;">0</span>
+        </a>
+        <a href="organizer.html" class="nav-link active nav-organizer-link">Organizer</a>
+
+        <button class="profile-avatar-btn profile-btn" aria-label="Open User Profile">
+          <img class="header-user-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Organizer Profile" />
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    <div class="organizer-dashboard">
+
+      <!-- Organizer Hero Banner -->
+      <div class="org-banner">
+        <div>
+          <span class="category-pill" style="background:#1E3A8A;color:#FFFFFF;border:none;">ORGANIZER DASHBOARD</span>
+          <h1 class="org-banner-title">Attendee Tracker &amp; Event Manager</h1>
+          <p class="org-banner-desc">
+            Monitor real-time attendee RSVPs, track ticket volume, and publish new curated events to the discovery catalog.
+          </p>
+        </div>
+        <div>
+          <a href="#create-event-panel" class="btn btn-outline" style="background:#FFFFFF;color:#0F172A;">
+            + Publish New Event
+          </a>
+        </div>
+      </div>
+
+      <!-- Real-Time Metrics -->
+      <div class="metrics-summary-grid">
+        <div class="metric-card">
+          <span class="metric-card-title">Live Published Events</span>
+          <span class="metric-card-value" id="metric-total-events">12</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-title">Total Registered Attendees</span>
+          <span class="metric-card-value" id="metric-total-attendees">1</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-title">Confirmed Gross Volume</span>
+          <span class="metric-card-value" id="metric-total-revenue">$298.00</span>
+        </div>
+      </div>
+
+      <!-- Two-Column Layout: Attendee Tracker & Event Creator -->
+      <div class="organizer-two-col">
+
+        <!-- Left: Attendee Tracker Table -->
+        <div class="panel-box">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Registered Attendees Tracker</h2>
+              <span class="text-sm text-muted">Real-time RSVP registrations for your events</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="attendees-table">
+              <thead>
+                <tr>
+                  <th>Booking Ref</th>
+                  <th>Attendee</th>
+                  <th>Email</th>
+                  <th>Event</th>
+                  <th>Quantity</th>
+                  <th>Date Booked</th>
+                </tr>
+              </thead>
+              <tbody id="organizer-attendees-table">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Active Listings Roster -->
+          <div style="margin-top: 32px;">
+            <div class="panel-header" style="margin-bottom: 12px; padding-bottom: 10px;">
+              <h3 class="panel-title" style="font-size: 1rem;">Active Listings &amp; Capacity</h3>
+            </div>
+            <div class="organizer-events-list" id="organizer-events-list">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Create New Event Form -->
+        <div class="panel-box" id="create-event-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Create New Event</h2>
+          </div>
+
+          <form id="create-event-form" class="create-form-grid">
+            <div class="form-group create-form-full">
+              <label for="new-event-title" class="form-label">Event Title</label>
+              <input type="text" id="new-event-title" name="title" class="form-control" required placeholder="e.g. Generative Design Workshop" />
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-category" class="form-label">Category</label>
+              <select id="new-event-category" name="category" class="form-control" required>
+                <option value="Tech & Design Conferences">Tech &amp; Design Conferences</option>
+                <option value="Music & Acoustic Nights">Music &amp; Acoustic Nights</option>
+                <option value="Workshops & Masterclasses">Workshops &amp; Masterclasses</option>
+                <option value="Art Exhibitions & Galas">Art Exhibitions &amp; Galas</option>
+                <option value="Community Meetups">Community Meetups</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-datetime" class="form-label">Date and Time</label>
+              <input type="datetime-local" id="new-event-datetime" name="datetime" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-venue" class="form-label">Venue Name</label>
+              <input type="text" id="new-event-venue" name="venueName" class="form-control" required placeholder="e.g. Gray Area Theater" />
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-address" class="form-label">Address</label>
+              <input type="text" id="new-event-address" name="venueAddress" class="form-control" required placeholder="e.g. 2665 Mission St" />
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-city" class="form-label">City, State</label>
+              <input type="text" id="new-event-city" name="venueCity" class="form-control" value="San Francisco, CA" />
+            </div>
+
+            <div class="form-group">
+              <label for="new-event-price" class="form-label">Ticket Price ($)</label>
+              <input type="number" id="new-event-price" name="ticketPrice" class="form-control" min="0" step="1" value="45" required />
+            </div>
+
+            <div class="form-group create-form-full">
+              <label for="new-event-spots" class="form-label">Total Capacity / Spots</label>
+              <input type="number" id="new-event-spots" name="totalSpots" class="form-control" min="5" max="1000" value="75" required />
+            </div>
+
+            <div class="form-group create-form-full">
+              <label for="new-event-desc" class="form-label">Full Description</label>
+              <textarea id="new-event-desc" name="description" class="form-control" rows="4" required placeholder="Describe what attendees will learn, experience, or enjoy..."></textarea>
+            </div>
+
+            <div class="form-group create-form-full">
+              <label for="new-event-img" class="form-label">Cover Image URL (Unsplash)</label>
+              <input type="url" id="new-event-img" name="imageUrl" class="form-control" placeholder="https://images.unsplash.com/photo-..." />
+            </div>
+
+            <div class="create-form-full" style="margin-top: 10px;">
+              <button type="submit" class="btn btn-primary btn-block">
+                Publish Event to Catalog
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-item" id="mobile-nav-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="index.html#search" class="mobile-nav-item" id="mobile-nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span>Search</span>
+    </a>
+
+    <a href="favorites.html" class="mobile-nav-item" id="mobile-nav-favs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+      </svg>
+      <span>Favorites</span>
+      <span class="favorites-count-badge mobile-nav-badge" style="display:none;">0</span>
+    </a>
+
+    <a href="#profile" class="mobile-nav-item profile-btn" id="mobile-nav-profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div>
+        <strong>Relax Local Events Platform</strong> &bull; Light, Fast, Framework-free Web App
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Catalog</a>
+        <a href="favorites.html">My Favorites</a>
+        <a href="organizer.html">Organizer Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/eventService.js"></script>
+  <script src="scripts/favorites.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

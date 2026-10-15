@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relax • Local Event Discovery &amp; Tickets</title>
+  <meta name="description" content="Discover, filter, and RSVP to local events, workshops, concerts, and tech summits with real-time seat tracking and calendar export." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+
+  <!-- Global Header (Wireframe 1) -->
+  <header class="app-header">
+    <div class="header-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-link" id="brand-logo-link">
+        <div class="brand-icon-box">
+          <img src="assets/favicon.svg" alt="Relax Events Logo" class="brand-icon-img" />
+        </div>
+        <div>
+          <span class="brand-name">RELAX</span>
+          <span class="brand-tagline">Event Discovery</span>
+        </div>
+      </a>
+
+      <!-- Search Input Wrap -->
+      <div class="header-search-wrap">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="header-search-input" 
+            class="search-input" 
+            placeholder="Search by event, keyword, or venue..." 
+            aria-label="Search events" 
+          />
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link active">Events</a>
+        <a href="favorites.html" class="nav-link favorites-nav-link">
+          <span class="favorites-nav-label">FAVORITES (0)</span>
+          <span class="favorites-count-badge" style="display:none;">0</span>
+        </a>
+        <a href="organizer.html" class="nav-link nav-organizer-link" style="display:none;">Organizer</a>
+
+        <!-- Profile / Session Switcher -->
+        <button class="profile-avatar-btn profile-btn" id="header-profile-btn" aria-label="Open User Profile">
+          <img class="header-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile" />
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="main-content">
+    <div class="catalog-layout">
+
+      <!-- Left Filters Sidebar (Wireframe 1) -->
+      <aside class="filters-sidebar" aria-label="Filter events">
+        <div class="filters-header">
+          <div class="filters-title-group">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span>Filters</span>
+          </div>
+          <button type="button" class="reset-filters-btn" id="reset-filters-btn">Reset All</button>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Categories</div>
+          <div class="filter-checkbox-list" id="categories-filter-list">
+            <!-- Dynamically populated with category counts -->
+          </div>
+        </div>
+
+        <!-- Date Range Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Date Range</div>
+          <div class="date-range-inputs">
+            <div class="date-input-field">
+              <label for="date-from-input" class="date-label">From</label>
+              <input type="date" id="date-from-input" class="date-input" />
+            </div>
+            <div class="date-input-field">
+              <label for="date-to-input" class="date-label">To</label>
+              <input type="date" id="date-to-input" class="date-input" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Location</div>
+          <div class="location-input-wrap">
+            <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <input 
+              type="text" 
+              id="filter-location-input" 
+              class="location-input" 
+              placeholder="San Francisco, CA" 
+              aria-label="Location filter" 
+            />
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <div class="price-slider-wrap">
+            <div class="price-slider-label-row">
+              <span class="filter-section-title" style="margin-bottom:0;">Price Range</span>
+              <span id="price-slider-display">$0 - $250+</span>
+            </div>
+            <input 
+              type="range" 
+              id="price-range-slider" 
+              class="range-slider" 
+              min="0" 
+              max="250" 
+              value="250" 
+              step="5" 
+              aria-label="Price range filter" 
+            />
+          </div>
+        </div>
+
+        <!-- Apply Filters Button -->
+        <div class="apply-filters-btn-wrap">
+          <button type="button" class="btn btn-primary btn-block" id="apply-filters-btn">
+            Apply Filters
+          </button>
+        </div>
+      </aside>
+
+      <!-- Right Main Catalog Area (Wireframe 1) -->
+      <section class="catalog-main" aria-label="Event Catalog">
+        <div class="catalog-main-header">
+          <div class="catalog-title-col">
+            <h1 class="catalog-heading">Explore Events</h1>
+            <p class="events-count-text" id="events-count-display">Showing 0 of 0 matching events</p>
+          </div>
+
+          <div class="catalog-sort-col">
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select" class="sort-select">
+              <option value="upcoming">Upcoming Date</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="spots-left">Fewest Spots Left</option>
+              <option value="title">Alphabetical (A-Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3x3 Grid of Event Cards -->
+        <div class="catalog-grid" id="catalog-grid">
+          <!-- Dynamically populated by ui.js -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-wrapper" id="pagination-container">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar (Wireframe 2) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-item active" id="mobile-nav-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="index.html#search" class="mobile-nav-item" id="mobile-nav-search" onclick="document.getElementById('header-search-input')?.focus();">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span>Search</span>
+    </a>
+
+    <a href="favorites.html" class="mobile-nav-item" id="mobile-nav-favs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+      </svg>
+      <span>Favorites</span>
+      <span class="favorites-count-badge mobile-nav-badge" style="display:none;">0</span>
+    </a>
+
+    <a href="#profile" class="mobile-nav-item profile-btn" id="mobile-nav-profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div>
+        <strong>Relax Local Events Platform</strong> &bull; Light, Fast, Framework-free Web App
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Catalog</a>
+        <a href="favorites.html">My Favorites</a>
+        <a href="organizer.html">Organizer Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript Modules (No Frameworks) -->
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/eventService.js"></script>
+  <script src="scripts/favorites.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

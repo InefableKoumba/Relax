@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites • Relax Local Events</title>
+  <meta name="description" content="View, sort, manage, and book your saved favorite events in your personal wishlist." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+
+  <!-- Desktop Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-icon-box">
+          <img src="assets/favicon.svg" alt="Relax Events Logo" class="brand-icon-img" />
+        </div>
+        <div>
+          <span class="brand-name">RELAX</span>
+          <span class="brand-tagline">Event Discovery</span>
+        </div>
+      </a>
+
+      <div class="header-search-wrap">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="fav-search-input" 
+            class="search-input" 
+            placeholder="Search within your saved favorites..." 
+            aria-label="Search favorites" 
+          />
+        </div>
+      </div>
+
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Events</a>
+        <a href="favorites.html" class="nav-link active favorites-nav-link">
+          <span class="favorites-nav-label">FAVORITES (3)</span>
+          <span class="favorites-count-badge">3</span>
+        </a>
+        <a href="organizer.html" class="nav-link nav-organizer-link" style="display:none;">Organizer</a>
+
+        <button class="profile-avatar-btn profile-btn" aria-label="Open User Profile">
+          <img class="header-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile" />
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container (Wireframe 2 Favorites Screen) -->
+  <main class="main-content">
+    <div class="favorites-page-shell">
+
+      <!-- Mobile Wireframe Top Bar -->
+      <div class="fav-top-bar">
+        <a href="index.html" class="fav-back-btn" aria-label="Back to Catalog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </a>
+
+        <div class="fav-title-center">
+          <h1 class="fav-main-heading">MY FAVORITES</h1>
+          <span class="fav-count-subtitle" id="favorites-count-heading">3 Saved Events</span>
+        </div>
+
+        <button class="profile-avatar-btn profile-btn" aria-label="Open User Profile">
+          <img class="header-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile" />
+        </button>
+      </div>
+
+      <!-- Filter Tabs Row (Wireframe 2) -->
+      <div class="fav-filter-row">
+        <div class="fav-tabs-group">
+          <button type="button" class="fav-tab-pill active" id="fav-tab-all">ALL (3)</button>
+          <button type="button" class="fav-tab-pill" id="fav-tab-month">THIS MONTH (2)</button>
+        </div>
+        <button type="button" class="fav-clear-all-btn" id="fav-clear-all-btn">Clear All</button>
+      </div>
+
+      <!-- Saved Events List -->
+      <div class="favorites-list-container" id="favorites-list-container">
+        <!-- Rendered by ui.js & app.js matching wireframe 2 -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar (Wireframe 2) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-item" id="mobile-nav-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="index.html#search" class="mobile-nav-item" id="mobile-nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span>Search</span>
+    </a>
+
+    <a href="favorites.html" class="mobile-nav-item active" id="mobile-nav-favs">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+      </svg>
+      <span>Favorites</span>
+      <span class="favorites-count-badge mobile-nav-badge">3</span>
+    </a>
+
+    <a href="#profile" class="mobile-nav-item profile-btn" id="mobile-nav-profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div>
+        <strong>Relax Local Events Platform</strong> &bull; Light, Fast, Framework-free Web App
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Catalog</a>
+        <a href="favorites.html">My Favorites</a>
+        <a href="organizer.html">Organizer Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/eventService.js"></script>
+  <script src="scripts/favorites.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

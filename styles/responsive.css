@@ -1,0 +1,140 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Breakpoints, Mobile Navigation, and Adaptive Layouts
+   ========================================================================== */
+
+/* Tablet & Smaller Laptops */
+@media (max-width: 1080px) {
+  .catalog-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky-booking-widget {
+    position: static;
+  }
+}
+
+/* Tablet Portrait & Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 70px; /* Space for mobile bottom bar */
+  }
+
+  .main-content {
+    padding: 16px 16px 60px 16px;
+  }
+
+  /* Header adjustments */
+  .header-container {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-nav {
+    display: none; /* Handled by mobile bottom nav */
+  }
+
+  .header-search-wrap {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .brand-link {
+    order: 1;
+  }
+
+  .profile-avatar-btn {
+    order: 2;
+  }
+
+  /* Catalog Layout Stacking */
+  .catalog-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .filters-sidebar {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  .catalog-main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .catalog-sort-col {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Mobile Bottom Navigation active */
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  /* Detail Page adjustments */
+  .detail-title {
+    font-size: 1.45rem;
+  }
+
+  .detail-quick-meta {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-action-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .fav-actions-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+}
+
+/* Extra Small Phones (< 420px) */
+@media (max-width: 420px) {
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .fav-thumb-wrap {
+    width: 72px;
+    height: 72px;
+  }
+
+  .fav-title {
+    font-size: 0.9rem;
+  }
+
+  .modal-card {
+    padding: 16px;
+  }
+}
